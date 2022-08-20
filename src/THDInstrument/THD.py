@@ -8,9 +8,9 @@ import funciones
 import pyvisa
 rm = pyvisa.ResourceManager()
 rm.list_resources()
-inst = rm.open_resource('ASRL/dev/ttyACM0::INSTR')
-inst.write_termination = "\n"
-inst.read_termination = "\n"
+
+import hardware
+THD = hardware.THD_Arduino()
 
 def infiniteloop1():
     from firebase import firebase
@@ -23,8 +23,7 @@ def infiniteloop1():
        
         t = time.time()-t0
         y = A*numpy.sin(2*numpy.pi*f*t) + A
-        pwm = int(255*y/10)
-        inst.write("SYSTem:THD:OUTPut:VOLTage {}".format(pwm))
+        THD.set_voltage(y)
         print(t,pwm)
         print(f)
 
@@ -33,8 +32,8 @@ def infiniteloop2():
     firebase = firebase.FirebaseApplication('https://fc-remotelaboratory-default-rtdb.firebaseio.com', None)
     i=1
     while True:
-        temp1 = inst.query("SYSTem:THD:MEASure:TEMPerature1?")
-        temp2 = inst.query("SYSTem:THD:MEASure:TEMPerature2?")
+        temp1 = THD.Temperature1
+        temp2 = THD.Temperature2
         firebase.patch('/Measure/Temperature1/',{str(i): float(temp1)})
         firebase.patch('/Measure/Temperature2/',{str(i): float(temp2)})
         i += 1
