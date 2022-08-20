@@ -1,0 +1,23 @@
+[project]
+name = "THDInstrument"
+dynamic = ["version"]
+authors = [
+  { name="Luis Alejandro Chanquetti Herrera", email="luis.chanquetti.h@uni.pe" }
+  { name="Diego Gonzalez Chavez", email="diego.gonzalez.chavez@gmail.com" },
+]
+description = "Instrument project to measure thermal diffusivity using the Angstrom method"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+[build-system]
+requires = ["pdm-pep517"]
+build-backend = "pdm.pep517.api"
+
+[tool.pdm.version]
+source = "file"
+path = "src/THDInstrument/__init__.py"
