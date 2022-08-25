@@ -2,8 +2,8 @@
 name = "THDInstrument"
 dynamic = ["version"]
 authors = [
-  { name="Luis Alejandro Chanquetti Herrera", email="luis.chanquetti.h@uni.pe" }
-  { name="Diego Gonzalez Chavez", email="diego.gonzalez.chavez@gmail.com" },
+  { name="Luis Alejandro Chanquetti Herrera", email="luis.chanquetti.h@uni.pe" },
+  { name="Diego Gonzalez Chavez", email="diego.gonzalez.chavez@gmail.com" }
 ]
 description = "Instrument project to measure thermal diffusivity using the Angstrom method"
 readme = "README.md"
